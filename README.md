@@ -22,13 +22,13 @@
 
 | Column             | Type       | Options                           |
 | ------------------ | -----------| --------------------------------- |
-| item               | string     | null: false, limit:40             |
+| item_name          | string     | null: false, limit:40             |
 | discription        | text       | null: false, limit:1000           |
 | category_id        | integer    | null: false                       |
 | item_state_id      | integer    | null: false                       |
 | delivery_charge_id | integer    | null: false                       |
 | delivery_source_id | integer    | null: false                       |
-| delivery_days_id   | integer    | null: false                       |
+| delivery_day_id    | integer    | null: false                       |
 | price              | integer    | null: false                       |
 | user               | references | null: false, foreign_key:true |
 
@@ -37,7 +37,7 @@
 ### Association
 
 - belongs_to :user
-- has_one :purchas
+- has_one :purchase
 
 ## purchases テーブル
 
@@ -56,12 +56,12 @@
 
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
-| post_num    | int        | null: false                    |
-| address     | ENUM       | null: false                    |
+| post_num    | string     | null: false                    |
+| address     | integer    | null: false                    |
 | city        | string     | null: false                    |
 | block       | string     | null: false                    |
 | building    | string     |                                |
-| tell        | int        | null: false                    |
+| tell        | string     | null: false                    |
 | purchase    | references | null: false, foreign_key: true |
 
 ### Association
