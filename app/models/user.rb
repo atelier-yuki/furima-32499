@@ -9,8 +9,8 @@ class User < ApplicationRecord
 
   valid_password_regex = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, 
-            format: {with: valid_password_regex,
-            message: "は半角英数字それぞれ１文字以上含む必要があります"}
+            format: { with: valid_password_regex,
+            message: "は半角英数字それぞれ１文字以上含む必要があります" }
   validates :password_confirmation, presence: true
   validates :birthday, presence: true
 
