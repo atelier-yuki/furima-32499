@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        family_name: 名字
+        last_name: 名前
+        fname_kana: カナ名字
+        lname_kana: カナ名前
+        birthday: 生年月日
+        remember_me: 次回から自動的にログイン
