@@ -12,6 +12,7 @@ class User < ApplicationRecord
               format: { with: valid_password_regex,
               message: "は半角英数字それぞれ１文字以上含む必要があります" }
     validates :birthday
+    validates :password_confirmation
   end
   
 
