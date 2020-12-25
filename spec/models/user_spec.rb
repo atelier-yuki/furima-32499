@@ -105,6 +105,16 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Lname kana に全角カタカナ文字を使用してください")
       end
+      it "fname_kanaがかな文字では登録できない" do
+        @user.fname_kana = "やまだ"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Fname kana に全角カタカナ文字を使用してください")
+      end
+      it "lname_kanaがかな文字では登録できない" do
+        @user.lname_kana = "たろう"
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Lname kana に全角カタカナ文字を使用してください")
+      end
       it "birthdayが空では登録できない" do
         @user.birthday = nil
         @user.valid?

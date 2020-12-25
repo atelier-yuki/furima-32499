@@ -4,15 +4,18 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
-  validates :email, uniqueness: true
+  with_options presence: true do
+    validates :nickname
+    validates :email, uniqueness: true
 
-  valid_password_regex = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates :password, 
-            format: { with: valid_password_regex,
-            message: "は半角英数字それぞれ１文字以上含む必要があります" }
-  validates :password_confirmation, presence: true
-  validates :birthday, presence: true
+    valid_password_regex = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+    validates :password, 
+              format: { with: valid_password_regex,
+              message: "は半角英数字それぞれ１文字以上含む必要があります" }
+    validates :password_confirmation
+    validates :birthday
+  end
+  
 
   valid_username_regex = /\A[ぁ-ゔァ-ヴ\p{Ideographic}ａ-ｚＡ-Ｚ０-９]+\z/.freeze
   with_options presence: true, format: { with: valid_username_regex, message: 'に全角文字を使用してください' } do
