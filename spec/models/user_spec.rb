@@ -64,8 +64,8 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password は半角英数字それぞれ１文字以上含む必要があります")
       end
       it "passwordが半角数字のみでは登録できない" do
-        @user.password = "1111111"
-        @user.password_confirmation = "111111"
+        @user.password = 1111111
+        @user.password_confirmation = 111111
         @user.valid?
         expect(@user.errors.full_messages).to include("Password は半角英数字それぞれ１文字以上含む必要があります")
       end
