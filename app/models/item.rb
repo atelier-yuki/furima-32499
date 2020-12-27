@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
     validates :item_name, length: { maximum: 40 }
@@ -10,6 +11,5 @@ class Item < ApplicationRecord
     validates :address_id
     validates :delivery_day_id
     validates :price, length: { in: 300..9999999 }
-    validates :user_id, foreign_key:true
   end
 end
