@@ -1,4 +1,8 @@
-class CategoryId < ActiveHash::Base
+class Category < ActiveHash::Base
+
+  include ActiveHash::Associations
+  has_many :items
+
   self.data = [
     { id: 0, name: '--' },
     { id: 1, name: 'レディース' },
@@ -13,7 +17,4 @@ class CategoryId < ActiveHash::Base
     { id: 10, name: 'その他' }
   ]
 
-  include ActiveHash::Associations
-  has_many :items
-
-  end
+end
