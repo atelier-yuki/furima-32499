@@ -7,11 +7,14 @@ class Item < ApplicationRecord
     validates :image
     validates :item_name, length: { maximum: 40 }
     validates :discription, length: { maximum: 1000 }
-    validates :category_id, numericality: { other_than: 0 }
-    validates :item_state_id, numericality: { other_than: 0 }
-    validates :delivery_charge_id, numericality: { other_than: 0 }
-    validates :address_id, numericality: { other_than: 0 }
-    validates :delivery_day_id, numericality: { other_than: 0 }
+
+    with_options numericality: { other_than: 0 } do
+      validates :category_id
+      validates :item_state_id
+      validates :delivery_charge_id
+      validates :address_id
+      validates :delivery_day_id
+   end
 
     valid_price_regex = /\A(?=.*?[\d])[\d]+\z/i.freeze
     validates :price,
