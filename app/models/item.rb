@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
+    validates :image
     validates :item_name, length: { maximum: 40 }
     validates :discription, length: { maximum: 1000 }
     validates :category_id, numericality: { other_than: 0 }
@@ -12,7 +13,10 @@ class Item < ApplicationRecord
     validates :delivery_day_id
 
     valid_price_regex = /\A(?=.*?[\d])[\d]+\z/i.freeze
-    validates :price, length: { in: 300..9999999 }
+    validates :price,
+              format: { with: valid_price_regex },
+              numericality: { greater_than_or_equal_to: 300,less_than_or_equal_to: 9999999 }
+
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
