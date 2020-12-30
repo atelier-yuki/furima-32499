@@ -5,8 +5,8 @@ class Item < ApplicationRecord
   
   with_options presence: true do
     validates :image
-    validates :item_name, length: { maximum: 40 }
-    validates :discription, length: { maximum: 1000 }
+    validates :item_name
+    validates :discription
 
     with_options numericality: { other_than: 0 } do
       validates :category_id
