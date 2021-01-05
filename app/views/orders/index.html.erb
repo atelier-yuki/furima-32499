@@ -1,7 +1,5 @@
 <%= render "shared/second-header"%>
 
-
-
 <div class='transaction-contents'>
   <div class='transaction-main'>
     <h1 class='transaction-title-text'>
@@ -15,7 +13,7 @@
           <%= "商品名" %>
         </h2>
         <div class='buy-item-price'>
-          <p class='item-price-text'>¥<%= 999,999,999 %></p>
+          <p class='item-price-text'>¥<%= 99 %></p>
           <p class='item-price-sub-text'><%= '配送料負担' %></p>
         </div>
       </div>
@@ -33,7 +31,7 @@
     </div>
     <%# /支払額の表示 %>
 
-    <%= form_with id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
+    <%= form_with model:@order, url:root_path, id: 'charge-form', class: 'transaction-form-wrap',local: true do |f| %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       <h1 class='info-input-haedline'>

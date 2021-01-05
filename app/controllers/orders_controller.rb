@@ -19,4 +19,3 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:post_num, :address_id, :city, :block, :building, :tell)
   end
 end
-end
