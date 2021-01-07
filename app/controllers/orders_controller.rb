@@ -1,22 +1,33 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :set_item
+
   def index
     @order = Order.new
-    @item = Item.find(params[:item_id])
+
+    if @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
     @order = Order.new(order_params)
     if @order.valid?
       @order.save
-      redirect_to root_path
+      redirect_to root_path, notice: '購入を完了しました'
     else
-      render action: :index
+      render :index, notice: '購入は完了しておりません'
     end
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:post_num, :address_id, :city, :block, :building, :tell)
+    params.require(:order).permit(:post_num, :address_id, :city, :block, :building, :tell).
+    merge(user_id: current_user.id, item_id: params[:item_id])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 end
