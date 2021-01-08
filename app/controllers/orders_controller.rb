@@ -17,8 +17,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     if @order.valid?
        pay_item
-      @order.save
-      redirect_to root_path, notice: '購入を完了しました'
+       @order.save
+       redirect_to root_path, notice: '購入を完了しました'
     else
       render :index, notice: '購入は完了しておりません'
     end
@@ -37,10 +37,10 @@ class OrdersController < ApplicationController
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
-      Payjp::Charge.create(
-        amount: @item.price,  # 商品の値段
-        card: order_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
-      )
+    Payjp::Charge.create(
+      amount: @item.price,  # 商品の値段
+      card: order_params[:token],    # カードトークン
+      currency: 'jpy'                 # 通貨の種類（日本円）
+    )
     end
 end
