@@ -1,6 +1,6 @@
 class Order
   include ActiveModel::Model
-  attr_accessor :post_num, :address_id, :city, :block, :building, :tell, :user_id, :item_id
+  attr_accessor :post_num, :address_id, :city, :block, :building, :tell, :user_id, :item_id, :token
 
   with_options presence: true do
     validates :address_id, numericality: { other_than: 0 }
@@ -8,6 +8,7 @@ class Order
     validates :block
     validates :user_id
     validates :item_id
+    validates :token
 
     valid_tell_regex = /\A[0-9]{1,11}\z/.freeze
     validates :tell,
