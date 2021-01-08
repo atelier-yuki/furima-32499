@@ -7,7 +7,10 @@ class OrdersController < ApplicationController
 
     if @item.user_id == current_user.id
       redirect_to root_path
+    elsif @item.purchase.present?
+      redirect_to root_path
     end
+
   end
 
   def create
