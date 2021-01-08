@@ -8,8 +8,7 @@ FactoryBot.define do
     block { "青山1-1-1" }
     building { "土ビル" }
     tell { "09011112222" }
-    user_id { 1 }
-    item_id { 9 }
+
 
  
   end

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do
-    @order = FactoryBot.build(:order)
+    @buyer = FactoryBot.create(:user)
+    @item = FactoryBot.create(:item)
+    @order = FactoryBot.build(:order, user_id: @buyer.id, item_id: @item.id)
   end
 
   describe "商品購入画面" do
